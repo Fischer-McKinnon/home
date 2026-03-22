@@ -3,6 +3,7 @@
 
 /* ─────────────────────────────────────────────────────────────
    Fischer McKinnon — Inter (200 · 300 · 400 · 500)
+   Loaded with display=swap; preconnect hints in layout.tsx
    ───────────────────────────────────────────────────────────── */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap");
 

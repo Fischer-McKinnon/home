@@ -1,10 +1,61 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/app/providers";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://fischermckinnon.com";
+
 export const metadata: Metadata = {
-  title: "Fischer McKinnon",
-  description: "Fischer McKinnon family home",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Fischer McKinnon",
+    template: "%s · Fischer McKinnon",
+  },
+  description: "Fischer McKinnon family home.",
+
+  /* ── Open Graph ───────────────────────────────────────────── */
+  openGraph: {
+    type: "website",
+    url: BASE_URL,
+    siteName: "Fischer McKinnon",
+    title: "Fischer McKinnon",
+    description: "Fischer McKinnon family home.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Fischer McKinnon",
+      },
+    ],
+  },
+
+  /* ── Twitter / X card ────────────────────────────────────── */
+  twitter: {
+    card: "summary_large_image",
+    title: "Fischer McKinnon",
+    description: "Fischer McKinnon family home.",
+    images: ["/og-image.png"],
+  },
+
+  /* ── Icons ───────────────────────────────────────────────── */
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  /* ── Robots: private family site — no indexing ───────────── */
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -14,6 +65,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      {/*
+       * Preconnect to Google Fonts origins.
+       * Must live directly inside <html> (not in metadata) to work in
+       * Next.js App Router — placing them here is the recommended pattern.
+       */}
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="min-h-full flex flex-col">
         {/*
          * Providers wraps the entire app with SessionProvider so client
