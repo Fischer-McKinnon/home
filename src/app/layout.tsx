@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Fischer McKinnon",
@@ -13,7 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/*
+         * Providers wraps the entire app with SessionProvider so client
+         * components can call useSession(). Server components should use
+         * `auth()` from "@/auth" directly — no provider needed server-side.
+         */}
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
