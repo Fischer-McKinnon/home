@@ -1,26 +1,97 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────────────────────
+   Fischer McKinnon — Inter (200 · 300 · 400 · 500)
+   ───────────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap");
+
+/* ─────────────────────────────────────────────────────────────
+   Tailwind v4 @theme — FM Design Tokens
+   All values here generate Tailwind utility classes automatically.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --font-weight-thin:   200;
+  --font-weight-light:  300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* ── Brand Colors ────────────────────────────────────────── */
+  --color-black: #111111;
+  --color-white: #ffffff;
+
+  /* Gray scale */
+  --color-gray-50:  #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e8e8e8;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #404040;
+
+  /* ── Letter Spacing ──────────────────────────────────────── */
+  --tracking-tight:      -0.04em; /* headings                  */
+  --tracking-label:       0.15em; /* labels, eyebrows          */
+  --tracking-label-wide:  0.22em; /* all-caps labels, nav      */
+
+  /* ── Border Radius — square everything ──────────────────── */
+  --radius-none: 0px;
+  --radius-sm:   0px;
+  --radius:      0px;
+  --radius-md:   0px;
+  --radius-lg:   0px;
+  --radius-xl:   0px;
+  --radius-2xl:  0px;
+  --radius-full: 0px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─────────────────────────────────────────────────────────────
+   CSS Custom Properties — portable semantic tokens
+   Reference in component styles: var(--color-fm-gray-200)
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Semantic surface/text */
+  --background: #ffffff;
+  --foreground: #111111;
+
+  /* FM brand palette */
+  --color-fm-black:    #111111;
+  --color-fm-white:    #ffffff;
+  --color-fm-gray-50:  #fafafa;
+  --color-fm-gray-100: #f5f5f5;
+  --color-fm-gray-200: #e8e8e8;
+  --color-fm-gray-300: #d4d4d4;
+  --color-fm-gray-400: #a3a3a3;
+  --color-fm-gray-500: #737373;
+  --color-fm-gray-600: #404040;
+
+  /* Font stack */
+  --font-fm: "Inter", system-ui, sans-serif;
+
+  /* Letter spacing */
+  --tracking-fm-heading:   -0.04em;
+  --tracking-fm-label:      0.15em;
+  --tracking-fm-label-wide: 0.22em;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111111;
+    --foreground: #ffffff;
   }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Base styles
+   ───────────────────────────────────────────────────────────── */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fm);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
