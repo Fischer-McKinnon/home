@@ -1,11 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
-/* ─────────────────────────────────────────────────────────────
-   Fischer McKinnon — Inter (200 · 300 · 400 · 500)
-   Loaded with display=swap; preconnect hints in layout.tsx
-   ───────────────────────────────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap");
+/*
+ * Inter font is loaded via <link rel="stylesheet"> in layout.tsx
+ * (HTML-level, discovered before CSS is parsed — better FCP than @import).
+ */
 
 /* ─────────────────────────────────────────────────────────────
    Tailwind v4 @theme — FM Design Tokens

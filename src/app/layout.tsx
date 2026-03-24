@@ -71,8 +71,18 @@ export default function RootLayout({
        * Next.js App Router — placing them here is the recommended pattern.
        */}
       <head>
+        {/* Preconnect to shorten font negotiation round-trips */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+         * Load Inter via <link> rather than CSS @import.
+         * Discovered earlier in the parse chain → better FCP.
+         * display=swap keeps text visible during font load.
+         */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap"
+        />
       </head>
       <body className="min-h-full flex flex-col">
         {/*
